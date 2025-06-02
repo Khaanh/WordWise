@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import AppNav from "./AppNav";
+import Footer from "./Footer";
 import Logo from "./Logo";
 import styles from "./Sidebar.module.css";
 
@@ -9,14 +10,14 @@ export default function Sidebar() {
 			<Logo />
 			<AppNav />
 
+			{/* 
+			- Outlet component use to renders the current nested router
+			- Use here to display cities and countries in a nested structure 
+			- Child routes will be rendered inside this Outlet placeholder
+			*/}
 			<Outlet />
 
-			{/* <p>List of cities</p> */}
-			<footer className={styles.footer}>
-				<p className={styles.copyright}>
-					&copy; Copyright {new Date().getFullYear()} by WorldWise Inc
-				</p>
-			</footer>
+			<Footer />
 		</div>
 	);
 }
