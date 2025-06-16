@@ -1,16 +1,14 @@
-import { useCities } from "../contexts/CitiesContex";
 import CountryItem from "./CountryItem";
-import styles from "./countryList.module.css";
+import styles from "./CountryList.module.css";
 import Message from "./Message";
 import Spinner from "./Spinner";
 
-export default function CountryList() {
-	const { cities, isLoading } = useCities();
+export default function CountryList({ cities, isLoading }) {
 	if (isLoading) return <Spinner />;
 
 	if (!cities.length)
 		return (
-			<Message message="add your first city by clicking on a city on the map" />
+			<Message message="Add your first city by clicking on a city on the map" />
 		);
 
 	const countries = cities.reduce((arr, city) => {
@@ -22,7 +20,7 @@ export default function CountryList() {
 	return (
 		<ul className={styles.countryList}>
 			{countries.map((country) => (
-				<CountryItem country={country} key={country.country} />
+				<CountryItem country={country} key={country.id} />
 			))}
 		</ul>
 	);
